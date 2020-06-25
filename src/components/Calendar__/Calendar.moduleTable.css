@@ -1,0 +1,32 @@
+.calendar {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.timeBox {
+  font-size: 16px;
+  width: 200px;
+}
+
+td:nth-child(2) {
+  font-size: 16px;
+ }
+
+table tr:nth-child(even) {
+  font-size: 12px;
+ }
+ table{
+  border-collapse: collapse;
+  border: 2px solid white; 
+  border-top: 1px solid red;
+ }
+
+TR:nth-child(odd) {
+  padding: 3px;
+  border: 1px solid maroon; 
+  text-align: left; 
+ }

@@ -1,0 +1,16 @@
+.header {
+  background-color: #57a7af;
+  height: 40px;
+  width: 100%;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  line-height: 40px;
+  margin: 0 auto;
+  color: #fff;
+}
+.logo{
+    padding-right: 40px;
+}

@@ -1,0 +1,15 @@
+.form {
+  width: 600px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.time {
+  width: 120px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.time:last-child {
+  margin-right: 0;
+}
