@@ -1,10 +1,10 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import style from "./Auth.module.css";
 
 const Auth = ({hamdleSubmit}) => {
   const submit = (e) => {
     e.preventDefault();
-    // if()
     hamdleSubmit();
   };
   return (
@@ -21,3 +21,7 @@ const Auth = ({hamdleSubmit}) => {
 };
 
 export default Auth;
+
+Auth.propTypes = {
+  hamdleSubmit: PropTypes.func
+};

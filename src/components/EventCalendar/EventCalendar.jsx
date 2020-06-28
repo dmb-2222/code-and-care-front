@@ -1,7 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
 import { deleteTask } from "../../redux/task/taskOperations";
-import {calcPositionEvent} from "../../helpers/calcPosition";
+import { calcPositionEvent } from "../../helpers/calcPosition";
 import styled from "styled-components";
 
 const Event = styled.div.attrs((props) => ({
@@ -56,3 +57,12 @@ const EventCalendar = ({ title, start, duration, right, width, id }) => {
 };
 
 export default EventCalendar;
+
+EventCalendar.propTypes = {
+  title: PropTypes.string.isRequired,
+  start: PropTypes.number.isRequired,
+  duration: PropTypes.number.isRequired,
+  right: PropTypes.bool.isRequired,
+  width: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+};

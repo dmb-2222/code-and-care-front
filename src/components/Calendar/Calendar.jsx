@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTask } from "../../redux/task/taskOperations";
 import { getTaskSelector } from "../../redux/task/taskSelectors";
+import {isAuth} from '../../redux/Auth/authSelectors'
 import { timeAm, timePm } from "../../helpers/time";
 import TimeScale from "../TimeScale";
 import style from "./Calendar.module.css";
@@ -14,12 +15,14 @@ const Calendar = () => {
   const memoizedCallback = useCallback(() => {
     dispatch(getTask());
   }, [dispatch]);
-  const isAuth = true;
+
+  const isLogin = useSelector(isAuth);
+
   useEffect(() => {
-    if (isAuth) {
+    if (isLogin) {
       memoizedCallback();
     }
-  }, [isAuth, memoizedCallback]);
+  }, [isLogin, memoizedCallback]);
   const appointments = useSelector(getTaskSelector);
   const eventWithPositions = appointments.length > 0 && maper(appointments);
   return (
