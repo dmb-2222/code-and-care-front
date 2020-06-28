@@ -1,14 +1,16 @@
-import React, { useRef } from "react";
-// import style from "./EventCalendar.module.css";
-import calcPositionEvent from "../../helpers/calcPosition";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { deleteTask } from "../../redux/task/taskOperations";
+import {calcPositionEvent} from "../../helpers/calcPosition";
 import styled from "styled-components";
 
-const FirstEvent = styled.div`
+const Event = styled.div.attrs((props) => ({
+  "data-task": props.taskId,
+}))`
   position: absolute;
   border-left: 1px solid #91b5da;
   padding-left: 2px;
-  /* background-color: #e2ecf5; */
-  background-color:red;
+  background-color: #e2ecf5;
   transform: translateY(${(props) => props.transform}px);
   left: ${(props) => props.transformX}px;
   height: ${(props) => props.height}px;
@@ -17,29 +19,38 @@ const FirstEvent = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
   &:hover {
+    button {
+      opacity: 1;
+    }
     white-space: normal;
     overflow: visible;
     background-color: #f2f5f8;
     font-size: 12px;
   }
+  button {
+    opacity: 0;
+    font-size: 9px;
+  }
 `;
-const EventCalendar = ({ title, start, duration, right, width }) => {
+
+const EventCalendar = ({ title, start, duration, right, width, id }) => {
   const { transform, height } = calcPositionEvent(start, duration);
-
-  const refDiv = useRef(null);
-  // console.log(refDiv);
-
+  const dispatch = useDispatch();
+  const handleDelete = (id) => {
+    dispatch(deleteTask(id));
+  };
   return (
     <>
-      <FirstEvent
-        ref={refDiv}
+      <Event
         transform={transform}
         height={height}
         width={width}
         transformX={right ? 93 : 0}
+        taskId={id}
       >
         {title}
-      </FirstEvent>
+        <button onClick={() => handleDelete(id)}>Del</button>
+      </Event>
     </>
   );
 };

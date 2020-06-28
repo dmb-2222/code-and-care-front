@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTask } from "../../redux/task/taskOperations";
+import { getTaskSelector } from "../../redux/task/taskSelectors";
 import { timeAm, timePm } from "../../helpers/time";
 import TimeScale from "../TimeScale";
 import style from "./Calendar.module.css";
 import EventCalendar from "../EventCalendar";
-import { appointments } from "./appointments";
+// import { appointments } from "./appointments";
 import maper from "../../helpers/maper";
 
 const Calendar = () => {
-  const eventWithPositions = maper(appointments);
+  const dispatch = useDispatch();
+  const memoizedCallback = useCallback(() => {
+    dispatch(getTask());
+  }, [dispatch]);
+  const isAuth = true;
+  useEffect(() => {
+    if (isAuth) {
+      memoizedCallback();
+    }
+  }, [isAuth, memoizedCallback]);
+  const appointments = useSelector(getTaskSelector);
+  const eventWithPositions = appointments.length > 0 && maper(appointments);
   return (
     <div className={style.calendar}>
       <div className={style.containerEvent}>
@@ -20,40 +34,53 @@ const Calendar = () => {
             </div>
           ))}
         </div>
-        <div className={style.boxEvent}>
-          {eventWithPositions.map((event) => (
-            <EventCalendar
-              key={event.id}
-              start={event.start}
-              duration={event.duration}
-              title={event.title}
-              right={event.right}
-              width={event.width}
-            />
+        {eventWithPositions && (
+          <div className={style.boxEvent}>
+            {eventWithPositions.map(
+              (event) =>
+                event.start < 300 && (
+                  <EventCalendar
+                    key={event._id}
+                    start={event.start}
+                    duration={event.duration}
+                    title={event.title}
+                    right={event.right}
+                    width={event.width}
+                    id={event._id}
+                  />
+                )
+            )}
+          </div>
+        )}
+      </div>
+      <div className={style.containerEvent}>
+        <div>
+          {timePm.map((time) => (
+            <div key={time} className={style.timeBox}>
+              <div className={style.scaleTieme}>
+                <TimeScale time={time} />
+              </div>
+            </div>
           ))}
         </div>
-      </div>
-
-      <div>
-        {timePm.map((time) => (
-          <div key={time} className={style.timeBox}>
-            <div className={style.scaleTieme}>
-              <TimeScale time={time} />
-            </div>
-            {/* <div className={style.boxEvent}>
-              {eventWithPositions.map((event) => (
-                <EventCalendar
-                  key={event.id}
-                  startDate={event.startDate}
-                  endDate={event.endDate}
-                  title={event.title}
-                  right={event.right}
-                  width={event.width}
-                />
-              ))}
-            </div> */}
+        {eventWithPositions && (
+          <div className={style.boxEvent}>
+            {eventWithPositions.map(
+              (event) =>
+                event.start >= 300 && (
+                  <EventCalendar
+                    key={event._id}
+                    start={event.start-300}
+                    duration={event.duration}
+                    title={event.title}
+                    right={event.right}
+                    width={event.width}
+                    id={event._id}
+                  />
+                )
+            )}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );

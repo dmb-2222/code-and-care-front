@@ -13,7 +13,7 @@
 }
 .timeBox {
   display: flex;
-  font-size: 16px;
+  font-size: 15px;
   padding-bottom: 30px;
 }
 .timeBox:nth-child(odd) {
@@ -26,10 +26,9 @@
 .boxEvent {
   position: relative;
   font-size: 14px;
-  cursor: pointer;
 }
 .scaleTieme {
-  width: 55px;
+  width: 57px;
   text-align: right;
   margin-right: 10px;
   color: #d1d1d1;

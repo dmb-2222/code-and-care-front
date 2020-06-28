@@ -1,33 +1,22 @@
-// const calcPositionEvent = (startDate, endDate) => {
-//   const startHours = startDate.getHours();
-//   const startMinute = startDate.getMinutes();
-//   const endDateHours = endDate.getHours();
-//   const endDateMinute = endDate.getMinutes();
-//   const startTimeDayTableOne = 480;
-//   const startPosition = startHours * 60 + startMinute - startTimeDayTableOne;
-//   const endPosition = endDateHours * 60 + endDateMinute - startTimeDayTableOne;
+export const calcAm = (startHour, startMinutes, endHour, endMinutes) => {
+  const start = startHour * 60 + 1 * startMinutes - 480;
+  const endPosition = endHour * 60 + 1 * endMinutes - 480;
+  const duration = endPosition - start;
+  return { start, duration };
+};
 
-//   const startTimeInMinets = startHours * 60 + startMinute;
-//   const endTimeInMinutes = endDateHours * 60 + endDateMinute;
+export const calcPm = (startHour, startMinutes, endHour, endMinutes) => {
+  const start = startHour * 60 + 1 * startMinutes + 240;
+  const endPosition = endHour * 60 + 1 * endMinutes + 240;
+  const duration = endPosition - start;
+  return { start, duration };
+};
 
-//   const transform = startPosition * 1.52;
-//   const height = (endPosition - startPosition) * 1.52;
-//   return {
-//     transform,
-//     height,
-//     startTimeInMinets,
-//     endTimeInMinutes,
-//   };
-// };
-// export default calcPositionEvent;
-
-
-const calcPositionEvent = (start, duration) => {
+export const calcPositionEvent = (start, duration) => {
   const transform = start * 1.52;
-  const height = (duration) * 1.52;
+  const height = duration * 1.52;
   return {
     transform,
     height,
   };
 };
-export default calcPositionEvent;

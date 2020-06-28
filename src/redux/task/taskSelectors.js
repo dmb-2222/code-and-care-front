@@ -1,0 +1,1 @@
+export const getTaskSelector = store => store.task;
