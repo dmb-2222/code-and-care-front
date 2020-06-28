@@ -1,0 +1,1 @@
+export const loadingSelector = store => store.isLoading;

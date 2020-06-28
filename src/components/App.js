@@ -1,14 +1,17 @@
 import React, { Suspense } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { isAuth} from '../redux/Auth/authSelectors';
+import { isAuth } from "../redux/Auth/authSelectors";
+import { loadingSelector } from "../redux/loading/loadingSelectors";
 import routes from "../routes";
+import Loader from "./Loader";
 
 import "./App.css";
 import Header from "./Header";
 
 const App = () => {
-  const isLogin = useSelector(isAuth)
+  const isLogin = useSelector(isAuth);
+  const isLoad = useSelector(loadingSelector);
   return (
     <div>
       <Header />
@@ -25,6 +28,7 @@ const App = () => {
           {!isLogin ? <Redirect to="/auth" /> : <Redirect to="/calendar" />}
         </Suspense>
       </Switch>
+      {isLoad && <Loader />}
     </div>
   );
 };
