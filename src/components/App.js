@@ -28,7 +28,7 @@ const App = () => {
           {!isLogin ? <Redirect to="/auth" /> : <Redirect to="/calendar" />}
         </Suspense>
       </Switch>
-      {/* {isLoad && <Loader />} */}
+      {isLoad && <Loader />}
     </div>
   );
 };
