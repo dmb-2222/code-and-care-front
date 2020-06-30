@@ -108,6 +108,8 @@ const Form = () => {
               value={startHour}
               // min={isAm ? "8" : "1"}
               // max={isAm ? "12" : "5"}
+              min={"8"}
+              max={"17"}
               className={style.time}
               required
             />
@@ -132,6 +134,8 @@ const Form = () => {
               value={endHour}
               // min={isAm ? "8" : "1"}
               // max={isAm ? "12" : "5"}
+              min={"8"}
+              max={"17"}
               className={style.time}
               required
             />
