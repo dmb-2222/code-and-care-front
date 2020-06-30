@@ -83,7 +83,7 @@ const Form = () => {
         </a>
       </div>
       <div className={style.containerForm}>
-        <form>
+        {/* <form>
           <div>
             <label>
               <input type="radio" onChange={handleRdio} checked={isAm} />
@@ -96,7 +96,7 @@ const Form = () => {
               PM
             </label>
           </div>
-        </form>
+        </form> */}
 
         <form onSubmit={handleSubmite} className={style.form}>
           <div>
@@ -106,8 +106,8 @@ const Form = () => {
               name="startHour"
               onChange={handleChange}
               value={startHour}
-              min={isAm ? "8" : "1"}
-              max={isAm ? "12" : "5"}
+              // min={isAm ? "8" : "1"}
+              // max={isAm ? "12" : "5"}
               className={style.time}
               required
             />
@@ -130,8 +130,8 @@ const Form = () => {
               name="endHour"
               onChange={handleChange}
               value={endHour}
-              min={isAm ? "8" : "1"}
-              max={isAm ? "12" : "5"}
+              // min={isAm ? "8" : "1"}
+              // max={isAm ? "12" : "5"}
               className={style.time}
               required
             />

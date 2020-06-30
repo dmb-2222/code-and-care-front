@@ -8,6 +8,7 @@ import styled from "styled-components";
 const Event = styled.div.attrs((props) => ({
   "data-task": props.taskId,
 }))`
+  font-family: "Open Sans";
   position: absolute;
   border-left: 1px solid #91b5da;
   padding-left: 2px;

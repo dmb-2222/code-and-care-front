@@ -41,7 +41,7 @@ const Calendar = () => {
           <div className={style.boxEvent}>
             {eventWithPositions.map(
               (event) =>
-                event.start < 300 && (
+                event.start && (
                   <EventCalendar
                     key={event._id}
                     start={event.start}
@@ -56,7 +56,7 @@ const Calendar = () => {
           </div>
         )}
       </div>
-      <div className={style.containerEvent}>
+      {/* <div className={style.containerEvent}>
         <div>
           {timePm.map((time) => (
             <div key={time} className={style.timeBox}>
@@ -84,7 +84,7 @@ const Calendar = () => {
             )}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

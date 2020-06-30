@@ -9,6 +9,15 @@ export const timeAm = [
   "11:30 am",
   "12:00 am",
   "12:30 am",
+  "1:00 pm",
+  "1:30 pm",
+  "2:00 pm",
+  "2:30 pm",
+  "3:00 pm",
+  "3:30 pm",
+  "4:00 pm",
+  "4:30 pm",
+  "5:00 pm",
 ];
 export const timePm = [
   "1:00 pm",
